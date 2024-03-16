@@ -1,0 +1,52 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+  string str1;
+  string year, month, day;
+  cin >> str1;
+  int i=0;
+  //istringstream 변수 ss에 문자열 str을 넣어 초기화
+  istringstream ss1(str1);
+  
+  string buffer; // 분리된 문자열을 넣는 버퍼
+
+  // istringstream, 문자열, 구분 문자 순서
+  // 띄어쓰기를 구분자로 분리됨
+  while(getline(ss1,buffer,'.')){
+    cout << buffer;
+      if (i==0){
+        year = buffer; 
+      }
+        
+      else if (i==1){
+        month = buffer;
+        
+      }
+      else if (i==2){
+        day = buffer;  
+      }
+      
+    i++;
+  
+  }
+  cout << year << endl;
+  cout << month << endl;
+  cout << day << endl;
+
+  if (year.size() == 2){
+    year = "00" + year;
+  }
+  
+  if (month.size() == 1){
+    month = "0" + month;
+  }
+
+  if (day.size() == 1){
+    day = "0" + day;
+  }
+  cout << year << "." << month << "." << day;
+}
